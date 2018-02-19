@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Calculo tarjeta crédito
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Valor:</ion-label>
+      <ion-input type="text" [(ngModel)]="valor" value=""></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label fixed>Interes:</ion-label>
+      <ion-input type="text" [(ngModel)]="interes"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Cuotas:</ion-label>
+      <ion-input type="text" [(ngModel)]="cuotas"></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button ion-button color="danger" (click) = "calcularCuota()" >Calcular</button>
+    </div>
+  
+  </ion-list>
+
+  <div>
+    {{error}}
+  </div>
+
+  <ion-list >
+    <ion-item *ngFor="let c of pagos">{{c.balance}} </ion-item>
+  </ion-list>
+</ion-content>
