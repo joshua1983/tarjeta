@@ -29,7 +29,7 @@ export class HomePage {
     var _R = this.valor/( ( 1 - Math.pow( (1 + interes), (-this.cuotas) ) ) / interes);
 
     if (interes == 0){
-      this.error = "El interes no puede ser cero";
+      interes = 0.00001;
     }
     if (this.valor == 0){
       this.error = "El valor no puede ser cero";
@@ -38,7 +38,7 @@ export class HomePage {
       this.cuotas = 1;
     }
     
-    for (var i=0; i<this.cuotas; i++){
+    for (var i=0; i<=this.cuotas; i++){
       var cuotaPago = {
         capital :0,
         interes :0,
@@ -47,18 +47,9 @@ export class HomePage {
       };
       if (i > 0){
         cuotaPago.pago = _R;
-        if (interes == 1){
-          cuotaPago.capital = this.valor;
-          cuotaPago.interes = 0;
-          cuotaPago.pago = this.valor;
-          cuotaPago.balance = 0;
-        }else{
-          var cuotaAnterior = this.pagos[i -1];
-          cuotaPago.interes = cuotaAnterior.balance * interes;
-          cuotaPago.capital = cuotaPago.pago - cuotaPago.interes;
-          cuotaPago.balance = cuotaPago.balance - cuotaPago.capital;
-          
-        }
+        cuotaPago.interes = this.pagos[i-1].balance * interes;
+        cuotaPago.capital = cuotaPago.pago - cuotaPago.interes;
+        cuotaPago.balance = this.pagos[i-1].balance - cuotaPago.capital;
       }else{
         cuotaPago.balance = this.valor;
       }

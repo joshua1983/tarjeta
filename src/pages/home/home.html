@@ -11,17 +11,17 @@
 
     <ion-item>
       <ion-label fixed>Valor:</ion-label>
-      <ion-input type="text" [(ngModel)]="valor" value=""></ion-input>
+      <ion-input type="number" [(ngModel)]="valor" value=""></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label fixed>Interes:</ion-label>
-      <ion-input type="text" [(ngModel)]="interes"></ion-input>
+      <ion-input type="number" [(ngModel)]="interes"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label fixed>Cuotas:</ion-label>
-      <ion-input type="text" [(ngModel)]="cuotas"></ion-input>
+      <ion-input type="number" [(ngModel)]="cuotas"></ion-input>
     </ion-item>
 
     <div padding>
@@ -34,7 +34,19 @@
     {{error}}
   </div>
 
-  <ion-list >
-    <ion-item *ngFor="let c of pagos">{{c.balance}} </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Saldo</ion-col>
+      <ion-col>Cuota</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let c of pagos">
+        <ion-col>
+            {{  c.balance | number: '1.0-0' }} 
+        </ion-col>
+        <ion-col>
+            {{  c.pago | number: '1.0-0'  }}
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
