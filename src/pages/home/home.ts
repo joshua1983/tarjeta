@@ -17,9 +17,9 @@ export class HomePage {
     balance :number
   }>;
   cuota: number;
+  pagoFinal: number;
 
   constructor(public navCtrl: NavController) {
-
   }
 
   calcularCuota(){
@@ -27,6 +27,7 @@ export class HomePage {
     var interes: number;
     interes = this.interes / 100;
     var _R = this.valor/( ( 1 - Math.pow( (1 + interes), (-this.cuotas) ) ) / interes);
+    this.pagoFinal = 0;
 
     if (interes == 0){
       interes = 0.00001;
@@ -53,6 +54,7 @@ export class HomePage {
       }else{
         cuotaPago.balance = this.valor;
       }
+      this.pagoFinal = this.pagoFinal + cuotaPago.pago;
       this.pagos.push(cuotaPago);
     }
 

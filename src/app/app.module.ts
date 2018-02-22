@@ -7,13 +7,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-import { CalculoComponent } from '../components/calculo/calculo';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    CalculoComponent
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -22,8 +20,7 @@ import { CalculoComponent } from '../components/calculo/calculo';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    CalculoComponent
+    HomePage
   ],
   providers: [
     StatusBar,
